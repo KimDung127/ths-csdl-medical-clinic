@@ -31,14 +31,14 @@
                                 bac_si_id,
                                 COUNT( id ) AS kham_chua_thanh_cong 
                             FROM
-                                lich_su_kham_chua 
+                                thong_tin_kham 
                             WHERE
                                 MONTH ( ngay_ra_vien ) = MONTH (
                                 CURRENT_DATE ()) 
                                 AND YEAR ( ngay_ra_vien ) = YEAR (
                                 CURRENT_DATE ()) 
                                 AND ngay_ra_vien <= NOW() 
-                                AND is_tai_kham = 0 
+                                AND trang_thai_tai_kham = 0 
                             GROUP BY
                                 bac_si_id
                         ) AS ds_kham_chua_thanh_cong ON ( ds_kham_chua_thanh_cong.bac_si_id = cb.id )
@@ -47,7 +47,7 @@
                                 COUNT( id ) AS so_lan_ho_tro,
                                 y_ta_id 
                             FROM
-                                lich_su_kham_chua 
+                                thong_tin_kham 
                             WHERE
                                 MONTH ( ngay_ra_vien ) = MONTH(CURRENT_DATE()) 
                                 AND YEAR ( ngay_ra_vien ) = YEAR(CURRENT_DATE()) 

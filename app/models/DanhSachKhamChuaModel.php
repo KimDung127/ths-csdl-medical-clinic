@@ -17,12 +17,12 @@ class DanhSachKhamChuaModel extends Model {
                 dsb.ten AS ten_benh,
                 COUNT( lskc.id ) AS so_lan_mac_benh
             FROM
-                lich_su_kham_chua AS lskc
-                INNER JOIN danh_sach_benh AS dsb ON dsb.id = lskc.benh_id
+                thong_tin_kham AS lskc
+                INNER JOIN benh AS dsb ON dsb.id = lskc.benh_id
             WHERE
                 MONTH ( lskc.ngay_vao_vien ) = :lskc_month
                 AND YEAR ( lskc.ngay_vao_vien ) = :lskc_year
-                AND lskc.is_tai_kham = 0
+                AND lskc.trang_thai_tai_kham = 0
             GROUP BY
                 benh_id
             ORDER BY COUNT( lskc.id ) DESC
